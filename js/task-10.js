@@ -44,7 +44,9 @@ function onClickMakeBoxes() {
       return `rgb(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()})`;
     }
 
-    el.style.backgroundColor = getRandomColor();
+    // el.style.backgroundColor = getRandomColor();
+
+    el.style.backgroundColor = getRandomHexColor();
     el.style.width = `${elementSize}px`;
     el.style.height = `${elementSize}px`;
     el.style.marginTop = "15px";
