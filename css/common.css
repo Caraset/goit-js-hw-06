@@ -62,6 +62,10 @@ ul {
   box-shadow: 8px 10px 37px -6px rgba(204, 132, 0, 0.2);
 }
 
+.item-img {
+  padding: 4px;
+}
+
 .item:nth-child(2) {
   margin-top: 60px;
 }

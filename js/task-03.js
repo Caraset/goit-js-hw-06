@@ -16,7 +16,7 @@ const images = [
 const galleryEl = document.querySelector(".gallery");
 
 const imagesArray = images.map(({ url, alt }) => {
-  return `<li class="item"><img class="image" src="${url}" alt="${alt}"></li>`;
+  return `<li class="item item-img"><img class="image" src="${url}" alt="${alt}"></li>`;
 });
 
 imagesArray.forEach((element) => {
