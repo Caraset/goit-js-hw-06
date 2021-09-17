@@ -62,9 +62,13 @@ function onClickMakeBoxes() {
 
   // добавляем все дивы на страницу
   refs.boxesEl.append(...boxesStorage);
+
+  refs.inputEl.value = "";
 }
 
 function destroyBoxes() {
   boxesStorage.forEach((el) => refs.boxesEl.removeChild(el));
   boxesStorage = [];
+
+  refs.inputEl.value = "";
 }
