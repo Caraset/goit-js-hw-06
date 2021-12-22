@@ -2,26 +2,27 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const refs = {
-  boxesEl: document.querySelector("#boxes"),
-  inputEl: document.querySelector("[type='number']"),
-  createBtnEl: document.querySelector("[data-create]"),
-  clearBtnEl: document.querySelector("[data-destroy]"),
+const refs: Irefs = {
+  boxesEl: <HTMLElement>document.querySelector("#boxes"),
+  inputEl: <HTMLElement>document.querySelector("[type='number']"),
+  createBtnEl: <HTMLElement>document.querySelector("[data-create]"),
+  clearBtnEl: <HTMLElement>document.querySelector("[data-destroy]"),
 };
 
 let quantity = 0;
-let boxesStorage = [];
+let boxesStorage: HTMLElement[] = [];
 
 refs.inputEl.addEventListener("input", onInputGetQuantity);
 refs.createBtnEl.addEventListener("click", onClickMakeBoxes);
 refs.clearBtnEl.addEventListener("click", destroyBoxes);
 
-function onInputGetQuantity(event) {
-  quantity = event.currentTarget.value;
+function onInputGetQuantity(event: Event) {
+  const value = Number((<HTMLTextAreaElement>event.currentTarget).value);
+  quantity = value;
 }
 
 function onClickMakeBoxes() {
-  let tempStorage = [];
+  let tempStorage: HTMLElement[] = [];
 
   // создаем временный масив с нужным количеством дивов
   for (let i = 0; i < quantity; i += 1) {
@@ -31,7 +32,7 @@ function onClickMakeBoxes() {
   }
 
   // функция для наполнения масивы дивов нужными характеристиками
-  function addStylesToDiv(el) {
+  function addStylesToDiv(el: HTMLElement): HTMLElement {
     const elementSize = 30 + 10 * boxesStorage.indexOf(el);
 
     // создает рандомный цвет в формате rgb
@@ -63,12 +64,14 @@ function onClickMakeBoxes() {
   // добавляем все дивы на страницу
   refs.boxesEl.append(...boxesStorage);
 
-  refs.inputEl.value = "";
+  (<HTMLTextAreaElement>refs.inputEl).value = "";
 }
 
 function destroyBoxes() {
   boxesStorage.forEach((el) => refs.boxesEl.removeChild(el));
   boxesStorage = [];
 
-  refs.inputEl.value = "";
+  (<HTMLTextAreaElement>refs.inputEl).value = "";
 }
+
+export {};
